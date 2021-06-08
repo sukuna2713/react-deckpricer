@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/deck-pricer/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/deck-pricer/static/js/main.acfa8a72.chunk.js",
-    "main.js.map": "/deck-pricer/static/js/main.acfa8a72.chunk.js.map",
-    "runtime-main.js": "/deck-pricer/static/js/runtime-main.156163b8.js",
-    "runtime-main.js.map": "/deck-pricer/static/js/runtime-main.156163b8.js.map",
-    "static/js/2.f310a16e.chunk.js": "/deck-pricer/static/js/2.f310a16e.chunk.js",
-    "static/js/2.f310a16e.chunk.js.map": "/deck-pricer/static/js/2.f310a16e.chunk.js.map",
-    "static/js/3.8f646dee.chunk.js": "/deck-pricer/static/js/3.8f646dee.chunk.js",
-    "static/js/3.8f646dee.chunk.js.map": "/deck-pricer/static/js/3.8f646dee.chunk.js.map",
-    "index.html": "/deck-pricer/index.html",
-    "static/css/main.8c8b27cf.chunk.css.map": "/deck-pricer/static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.f310a16e.chunk.js.LICENSE.txt": "/deck-pricer/static/js/2.f310a16e.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/deck-pricer/static/media/logo.6ce24c58.svg"
+    "main.css": "/react-deckpricer/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/react-deckpricer/static/js/main.acfa8a72.chunk.js",
+    "main.js.map": "/react-deckpricer/static/js/main.acfa8a72.chunk.js.map",
+    "runtime-main.js": "/react-deckpricer/static/js/runtime-main.b19b52aa.js",
+    "runtime-main.js.map": "/react-deckpricer/static/js/runtime-main.b19b52aa.js.map",
+    "static/js/2.f310a16e.chunk.js": "/react-deckpricer/static/js/2.f310a16e.chunk.js",
+    "static/js/2.f310a16e.chunk.js.map": "/react-deckpricer/static/js/2.f310a16e.chunk.js.map",
+    "static/js/3.8f646dee.chunk.js": "/react-deckpricer/static/js/3.8f646dee.chunk.js",
+    "static/js/3.8f646dee.chunk.js.map": "/react-deckpricer/static/js/3.8f646dee.chunk.js.map",
+    "index.html": "/react-deckpricer/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/react-deckpricer/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.f310a16e.chunk.js.LICENSE.txt": "/react-deckpricer/static/js/2.f310a16e.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/react-deckpricer/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.156163b8.js",
+    "static/js/runtime-main.b19b52aa.js",
     "static/js/2.f310a16e.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
     "static/js/main.acfa8a72.chunk.js"
