@@ -16,7 +16,7 @@
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
-  "homepage": "http://sukuna2713.github.io/deck-pricer",
+  "homepage": "http://sukuna2713.github.io/react-deckpricer",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
