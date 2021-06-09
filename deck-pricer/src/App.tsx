@@ -15,65 +15,55 @@ type FeeClassification = {
 
 type DetailProps = {
   classification: FeeClassification;
+  onNumOfPeopleChange: (num: number) => void;
 }
 
-type DetailState = {
+type SummaryProps = {
   numOfPeople: number;
+  totalAmount: number;
 }
 
-class Detail extends React.Component<DetailProps,DetailState> {
-  constructor(props: DetailProps) {
-    super(props);
-    this.state = {
-      numOfPeople: props.classification.numOfPeople
-    }
-  }
+const Detail: React.FC<DetailProps> = props => {
 
-  onNumOfPeopleChange(e: React.ChangeEvent<HTMLSelectElement>): void {
+  const onNumOfPeopleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const num: number = Number(e.target.value);
-    this.setState({
-      numOfPeople: num
-    });
+    props.onNumOfPeopleChange(num);
   }
 
-  render() {
-    return (
-      <div >
-        <div className="classification-name">{this.props.classification.name}</div>
-        <div className="description">{this.props.classification.description}</div>
-        <div className="unit-price">{this.props.classification.unitPrice}円</div>
-        <div className="num-people">
-          <select value={this.state.numOfPeople}
-          onChange={e => this.onNumOfPeopleChange(e)}>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-          <span>名</span>
-        </div>
+  return (
+    <div >
+      <div className="classification-name">{props.classification.name}</div>
+      <div className="description">{props.classification.description}</div>
+      <div className="unit-price">{props.classification.unitPrice}円</div>
+      <div className="num-people">
+        <select value={props.classification.numOfPeople}
+          onChange={e => onNumOfPeopleChange(e)}>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <span>名</span>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-class Summary extends React.Component {
-  render() {
-    return (
-      <div>
-        <div className="party">
-          <input type="text" className="party" value="0" />
-          <span>名様</span>
-        </div>
-        <div className="total-amount">
-          <span>合計</span>
-          <input type="text" className="total-amount" value="0" />
-          <span>円</span>
-        </div>
+const Summary: React.FC<SummaryProps> = props => {
+  return (
+    <div>
+      <div className="party">
+        <input type="text" className="party" value={props.numOfPeople} />
+        <span>名様</span>
       </div>
-    );
-  }
+      <div className="total-amount">
+        <span>合計</span>
+        <input type="text" className="total-amount" value={props.totalAmount} />
+        <span>円</span>
+      </div>
+    </div>
+  );
 }
 
 class AdmissionFeeCalculator extends React.Component<{}, AdmissionFeeCalculatorState> {
@@ -114,7 +104,7 @@ class AdmissionFeeCalculator extends React.Component<{}, AdmissionFeeCalculatorS
     const currentFC = this.state.feeClassifications[idx];
     const newTotalPrice = currentFC.unitPrice * num;
     //変更しない部分のコピー
-    const newFC: FeeClassification = 
+    const newFC: FeeClassification =
       Object.assign({}, currentFC, { numOfPeople: num, totalPrice: newTotalPrice });
     // 新たな配列を生成
     const feeClassifications = this.state.feeClassifications.slice();
@@ -126,17 +116,21 @@ class AdmissionFeeCalculator extends React.Component<{}, AdmissionFeeCalculatorS
 
   render() {
     //TO DO show https://qiita.com/yonetty/items/012be4c5c6258a609e35#appendix-%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
-    const details = this.state.feeClassifications.map((fc,idx) => {
+    const details = this.state.feeClassifications.map((fc, idx) => {
       return (
         <Detail key={idx.toString()} classification={fc}
-        onNumOfPeopleChange={n => this.handleNumOfPeopleChange(idx,n)} />
+          onNumOfPeopleChange={n => this.handleNumOfPeopleChange(idx, n)} />
       );
     });
 
+    const numOfPeople = this.state.feeClassifications
+      .map(fc => fc.numOfPeople).reduce((p, c) => p + c);
+    const totalAmount = this.state.feeClassifications
+      .map(fc => fc.totalPrice).reduce((p, c) => p + c)
     return (
       <>
         {details}
-        <Summary />
+        <Summary numOfPeople={numOfPeople} totalAmount={totalAmount} />
       </>
     );
   }
